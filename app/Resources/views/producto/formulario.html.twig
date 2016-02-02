@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+    <div>
+        <form method="post" action="{{ action }}" novalidate="novalidate">
+            <div>
+
+                {{ dump(form.vars.value) }}  <!-- valores de la entidad-->
+
+                <ul>
+                    {% for error in form.vars.errors %}    <!-- mostrar errores juntos-->
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>{{ form_errors(form.nombre) }}{{ form_label(form.nombre) }}: {{ form_widget(form.nombre) }}</div>
+            <div>{{ form_label(form.descripcion) }}{{ form_widget(form.descripcion) }}</div>
+            <div>{{ form_label(form.precio) }}{{ form_widget(form.precio) }}</div>
+            <div>{{ form_label(form.disponible) }}{{ form_widget(form.disponible) }}</div>
+            {{ form_rest(form) }}
+            <div><input type="submit" value="OK"></div>
+        </form>
+    </div>
+
+{% endblock %}

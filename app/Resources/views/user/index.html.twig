@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <table>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.createdAt|date("m/d/y") }}</td>
+                <td>{{ user.updatedAt|date("m/d/y") }}</td>
+                <td><a href="{{ path('app_user_update', {'id' : user.id}) }}">actualizar</a></td>
+                <td><a href="{{ path('app_user_remove', {'id' : user.id}) }}">eliminar</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+    <div style="margin-top: 10px">
+        <td><a href="{{ path('app_user_insert' )}}">New user</a></td>
+    </div>
+
+{% endblock %}
